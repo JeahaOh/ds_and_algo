@@ -1,8 +1,12 @@
 class Node {
-  constructor(data) {
+  constructor(data, left = null, right = null) {
     this.data = data;
-    this.left = null;
-    this.right = null;
+    this.left = left;
+    this.right = right;
+  }
+
+  show() {
+    return this.data;
   }
 }
 
@@ -11,147 +15,184 @@ class BST {
     this.root = null;
   }
 
+  getRoot() {
+    return this.root;
+  }
+
   insert(data) {
-    if (this.root === null) {
-      this.root = new Node(data);
+    // 이미 있으면 넣지 않음
+    if (this.find(data) != null) return;
+
+    let n = new Node(data);
+    if (this.root == null) {
+      this.root = n;
       return;
     }
 
-    this.currentNode = this.root;
-    //console.log('current : ', this.currentNode);
-    //console.log('root', this.root);
+    let current = this.root;
+    let parent;
 
-    while (this.currentNode) {
-      //console.log('data : ', data, 'current.data : ', this.currentNode.data);
-      if (data < this.currentNode.data) {
-        if (this.currentNode.left !== null) {
-          this.currentNode = this.currentNode.left;
-        } else {
-          this.currentNode.left = new Node(data);
+    while (true) {
+      parent = current;
+
+      if (data < current.data) {
+        current = current.left;
+
+        if (current == null) {
+          parent.left = n;
           break;
         }
-      } else {
-        if (this.currentNode.right !== null) {
-          this.currentNode = this.currentNode.right;
-        } else {
-          this.currentNode.right = new Node(data);
+      } else if (current.data < data) {
+        current = current.right;
+
+        if (current == null) {
+          parent.right = n;
           break;
         }
       }
     }
   }
-  
-  search(data) {
-    this.currentNode = this.root;
 
-    while (this.currentNode) {
-      if (this.currentNode.data == data) {
-        return true;
-      } else if (data < this.currentNode.data) {
-        this.currentNode = this.currentNode.left;
-      } else {
-        this.currentNode = this.currentNode.right;
+  // 중위 순회
+  inOrder(node) {
+    if (!(node == null)) {
+      this.inOrder(node.left);
+      console.log(node.show());
+      this.inOrder(node.right);
+    }
+  }
+
+  // 전위 순회
+  preOrder(node) {
+    if (!(node == null)) {
+      console.log(node.show());
+      this.preOrder(node.left);
+      this.preOrder(node.right);
+    }
+  }
+
+  // 후위 순회
+  postOrder(node) {
+    if (!(node == null)) {
+      this.postOrder(node.left);
+      this.postOrder(node.right);
+      console.log(node.show());
+    }
+  }
+
+  find(data) {
+    if (data == null) {
+      console.error('data is null');
+      return null;
+    }
+
+    let current = this.root;
+    if (current === null || current.data === null) {
+      console.error('can not catch root');
+      return null;
+    }
+
+    while (current.data != data) {
+      if (data < current.data) {
+        current = current.left
+      } else if (current.data < data) {
+        current = current.right;
+      }
+
+      if (current == null) {
+        //console.error('can not find data : ', data);
+        return null;
       }
     }
 
-    return false;
+    return current;
   }
-  
+
   remove(data) {
-    // 제거할 data의 파라미터를 두번째 인자로 넣는다
-    const removeNode = function (node, data) {
-      if (node == null) {
+    this.root = this.removeNode(this.root, data);
+  }
+
+  removeNode(node, data) {
+    if (node == null) {
+      return null;
+    }
+
+    if (data == node.data) {
+      if (node.left == null && node.right == null) {
         return null;
       }
 
-      if (data == node.data) {
-        // 말단 노드인 경우
-        if (node.left == null && node.right == null) {
-          return null;
-        }
-
-        if (node.left == null) {
-          return node.right;
-        }
-
-        if (node.right == null) {
-          return node.left;
-        }
-
-        let tempNode = node.right;
-        while (tempNode.left !== null) {
-          tempNode = tempNode.left;
-        }
-
-        node.data = tempNode.data;
-        node.right = removeNode(node.right, tempNode.data);
-        return node;
-      } else if (data < node.data) {
-        node.left = removeNode(node.right, data);
-      } else {
-        node.right = removeNode(node.root, data);
+      if (node.left == null) {
+        return node.right;
       }
+
+      if (node.right == null) {
+        return node.left;
+      }
+
+      let tempNode = this.getSmallest(node.right);
+      node.data = tempNode.data;
+      node.right = this.removeNode(node.right, tempNode.data);
+      return node;
+    } else if (data < node.data) {
+      node.left = this.removeNode(node.left, data);
+      return node;
+    } else {
+      node.right = this.removeNode(node.right, data);
+      return node;
     }
-    this.root = removeNode(this.root, data);
   }
 
-  print() {
-    const printNode = function(node, parent) {
-      if (node == null) {
-        console.log('no data')
-        return;
-      }
-
-      console.log(node);
-
-      if (node.left != null)
+  getSmallest(node) {
+    let current = node;
+    while (!(current.left == null)) {
+      current = current.left;
     }
+
+    return current;
   }
 }
 
-bst = new BST();
-bst.insert(10);
-bst.insert(15);
-bst.insert(5);
-bst.insert(16);
-bst.insert(6);
-bst.insert(14);
-bst.insert(4);
 
-bst.search(15);
+const bst = new BST();
+const elements = [];
 
-
-const getRandom = function(min, max) {
-  return Math.ceil(Math.random() * (max - min) + min);
+for (let i = 1; i <= 20; i++) {
+  elements.push(Math.floor(Math.random() * 100));
 }
+console.log('elements : ', elements);
 
-let bst_nums = new Set();
-
-while (bst_nums.size != 100) {
-  bst_nums.add(getRandom(0, 999));
+for (const idx in elements) {
+  bst.insert(elements[idx]);
 }
+console.log(JSON.stringify(bst));
 
-console.log ('bst_nums : ', bst_nums);
+console.log('----- pre order -----');
+console.log(bst.preOrder(bst.getRoot()));
+console.log('----- in order -----');
+console.log(bst.inOrder(bst.getRoot()));
+console.log('----- post order -----');
+console.log(bst.postOrder(bst.getRoot()));
 
-const binary_tree = new BST();
-bst.insert(500);
+console.log('\n----------------------------------\n');
 
-for (const num in bst_nums) {
-  binary_tree.insert(num);
-}
+let elementToFind = elements[Math.floor(Math.random() * elements.length)];
+console.log(`\nfind : ${elementToFind}\n`, bst.find(elementToFind));
 
-//for (const num in bst_nums) {}
+elementToFind = elements[Math.floor(Math.random() * elements.length)];
+console.log(`\nfind : ${elementToFind}\n`, bst.find(elementToFind));
 
-const temp = Array.from(bst_nums);
-const delete_nums = new Array();
+elementToFind = elements[Math.floor(Math.random() * elements.length)];
+console.log(`\nfind : ${elementToFind}\n`, bst.find(elementToFind));
 
-for (const idx = 0; i < 10; i++) {
-  delete_nums.add(temp[idx]);
-}
+console.log('\n----------------------------------\n');
 
-for (const del_num in delete_nums) {
+let elementToDelete = Math.floor(Math.random() * elements.length);
+console.log(`\nelementToDelete : ${elementToDelete}\n`, bst.find(elementToDelete), bst.remove(elementToDelete));
 
-}
+elementToDelete = Math.floor(Math.random() * elements.length);
+console.log(`\nelementToDelete : ${elementToDelete}\n`, bst.find(elementToDelete), bst.remove(elementToDelete));
 
+console.log('\n----------------------------------\n');
 
-
+console.log(JSON.stringify(bst));
