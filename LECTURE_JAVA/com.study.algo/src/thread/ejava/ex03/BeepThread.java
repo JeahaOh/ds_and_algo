@@ -1,15 +1,15 @@
-package thread.ejava;
+package thread.ejava.ex03;
 
 import java.awt.*;
 
-public class Ex03BeepThread extends Thread {
+public class BeepThread extends Thread {
     
     @Override
     public void run() {
-        Toolkit tookit = Toolkit.getDefaultToolkit();
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
     
         for (int i = 0; i < 5; i++) {
-            tookit.beep();
+            toolkit.beep();
         
             try {
                 Thread.sleep(500);

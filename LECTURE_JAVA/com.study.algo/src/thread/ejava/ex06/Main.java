@@ -1,5 +1,9 @@
 package thread.ejava.ex06;
 
+/**
+ * 동기화 메소드와 동기화 블록
+ * 공유 객체 사용
+ */
 public class Main {
     public static void main(String[] args) {
         Cal cal = new Cal();

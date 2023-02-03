@@ -1,8 +1,8 @@
-package thread.ejava;
+package thread.ejava.ex03;
 
-public class Ex03BeepThreadExecuter {
+public class Main {
     public static void main(String[] args) {
-        Thread t = new Ex03BeepThread();
+        Thread t = new BeepThread();
         t.start();
         
         for (int i = 0; i < 5; i++) {

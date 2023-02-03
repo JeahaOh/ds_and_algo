@@ -1,13 +1,13 @@
-package thread.ejava;
+package thread.ejava.ex01;
 
 import java.awt.*;
 
 public class Ex01 {
     public static void main(String[] args) {
-        Toolkit tookit = Toolkit.getDefaultToolkit();
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
         
         for (int i = 0; i < 5; i++) {
-            tookit.beep();
+            toolkit.beep();
             
             try {
                 Thread.sleep(500);

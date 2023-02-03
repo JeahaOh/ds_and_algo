@@ -1,9 +1,12 @@
-package thread.ejava;
+package thread.ejava.ex05;
 
-public class Ex05Priority {
+/**
+ * Thread Scheduling - Priority
+ */
+public class Main {
     public static void main(String[] args) {
         for (int i = 1; i <= 10; i++) {
-            Thread thread = new Ex05CalcThread("thread:" + i);
+            Thread thread = new CalcThread("thread:" + i);
             if (i != 10) {
                 thread.setPriority(Thread.MIN_PRIORITY);
             } else {

@@ -1,4 +1,4 @@
-package thread.ejava.Ex08;
+package thread.ejava.ex08;
 
 public class TargetTread extends Thread {
     @Override

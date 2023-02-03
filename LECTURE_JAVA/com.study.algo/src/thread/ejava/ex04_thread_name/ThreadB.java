@@ -1,6 +1,6 @@
-package thread.ejava;
+package thread.ejava.ex04_thread_name;
 
-public class Ex04ThreadB extends Thread {
+public class ThreadB extends Thread {
     @Override
     public void run() {
         for (int i = 0; i < 2; i++) {
