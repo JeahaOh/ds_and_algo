@@ -1,9 +1,8 @@
-package thread.ejava;
+package thread.ejava.ex02;
 
 import java.awt.*;
 
 public class Ex02 {
-    
     public static void main(String[] args) {
         Thread thread = new Thread(() -> {
             Toolkit toolkit = Toolkit.getDefaultToolkit();

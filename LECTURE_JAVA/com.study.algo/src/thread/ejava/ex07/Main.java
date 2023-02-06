@@ -1,5 +1,9 @@
 package thread.ejava.ex07;
 
+/**
+ * 동기화 메소드와 동기화 블록
+ * 동기화 블록으로 동기화 처리
+ */
 public class Main {
     public static void main(String[] args) {
         Cal cal = new Cal();

@@ -1,8 +1,8 @@
-package thread.ejava;
+package thread.ejava.ex05;
 
-public class Ex05CalcThread extends Thread {
+public class CalcThread extends Thread {
     
-    public Ex05CalcThread(String name) {
+    public CalcThread(String name) {
         setName(name);
     }
     

@@ -1,7 +1,7 @@
-package thread.ejava;
+package thread.ejava.ex04_thread_name;
 
-public class Ex04ThreadA extends Thread {
-    public Ex04ThreadA() {
+public class ThreadA extends Thread {
+    public ThreadA() {
         setName("ThreadA");
     }
     

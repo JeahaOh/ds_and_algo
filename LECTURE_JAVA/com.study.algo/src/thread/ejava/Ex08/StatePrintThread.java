@@ -1,4 +1,4 @@
-package thread.ejava.Ex08;
+package thread.ejava.ex08;
 
 public class StatePrintThread extends Thread {
     private Thread targetThread;
@@ -10,18 +10,20 @@ public class StatePrintThread extends Thread {
     @Override
     public void run() {
         while (true) {
-            State state = targetThread.getState();
+            Thread.State state = targetThread.getState();
             System.out.println("target thread state : " + state);
             
-            if (state == State.NEW) {
-                System.out.println("State.NEW ");
+            if (state == Thread.State.NEW) {
                 targetThread.start();
-            } else if (state == State.TERMINATED) {
-                System.out.println("TERMINATED ");
+            } else if (state == Thread.State.TERMINATED) {
                 break;
             }
             
-            
+            try {
+                Thread.sleep(300);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }
