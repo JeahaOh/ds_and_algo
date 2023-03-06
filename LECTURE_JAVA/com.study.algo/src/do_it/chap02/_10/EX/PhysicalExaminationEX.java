@@ -44,8 +44,6 @@ public class PhysicalExaminationEX {
     }
     
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        
         PhyscData[] x = {
                 new PhyscData("강민하", 162, 0.3),
                 new PhyscData("김찬우", 173, 0.7),
