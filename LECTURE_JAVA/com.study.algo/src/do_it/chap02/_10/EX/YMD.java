@@ -1,7 +1,6 @@
 package do_it.chap02._10.EX;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import do_it.Input;
 
 // 연습 2-8
 // 날짜 클래스
@@ -66,34 +65,17 @@ public class YMD {
 
         return temp;
     }
-    
-    public static int inputNumber(String msg) {
-        int n;
-        Scanner sc = new Scanner(System.in);
-    
-        do {
-            System.out.print(msg + " : ");
-            try {
-                n = sc.nextInt();
-            } catch (InputMismatchException ime) {
-                System.out.println("not a number");
-                n = - 1;
-            }
-        } while (n <= 0);
-        
-        return n;
-    }
 
     public static void main(String[] args) {
 
         System.out.println("input date ->");
-        int y = inputNumber("year");
-        int m = inputNumber("month");
-        int d = inputNumber("date");
+        int y = Input.number("year");
+        int m = Input.number("month");
+        int d = Input.number("date");
 
         YMD date = new YMD(y, m, d);
 
-        int n = inputNumber("days to calc");
+        int n = Input.number("days to calc");
 
         YMD d1 = date.after(n);
         System.out.printf("%d 후의 날짜는 %d.%d.%d\n", n, d1.y, d1.m, d1.d);
