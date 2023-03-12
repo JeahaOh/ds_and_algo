@@ -2,8 +2,6 @@ package do_it.chap03._04.EX;
 
 import do_it.Input;
 
-import java.util.Random;
-
 /**
  * 연습 3-4
  * 이진 검색 (검색 과정을 자세히 출력)
@@ -24,7 +22,7 @@ public class BinSearchEx {
         
         // 검색 범위 맨앞의 인덱스
         int pl = 0;
-        // 　 〃    　맨끝의 인덱스
+        // 검색 범위 맨끝의 인덱스
         int pr = n - 1;
         // 중앙요소의 인덱스
         int pc;
