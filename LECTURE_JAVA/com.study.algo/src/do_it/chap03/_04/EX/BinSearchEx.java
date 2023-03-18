@@ -61,19 +61,19 @@ public class BinSearchEx {
     }
     
     public static void main(String[] args) {
-        int num = Input.number("num");
+        int num = Input.integer("num");
         int[] x = new int[num];
 
         System.out.println("ASCENDING");
-        x[0] = Input.number("x[0]");
+        x[0] = Input.integer("x[0]");
 
         for (int i = 1; i < num; i++) {
             do {
-                x[i] = Input.number("x[" + i + "]");
+                x[i] = Input.integer("x[" + i + "]");
             } while (x[i] < x[i - 1]);
         }
 
-        int ky = Input.number("search");
+        int ky = Input.integer("search");
 
         int idx = binSearch(x, num, ky);
 

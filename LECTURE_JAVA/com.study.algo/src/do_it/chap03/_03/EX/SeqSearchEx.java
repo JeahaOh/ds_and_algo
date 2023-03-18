@@ -39,15 +39,15 @@ class SeqSearchEx {
     }
     
     public static void main(String[] args) {
-        int num = Input.number("num");
+        int num = Input.integer("num");
         // 요소가 num + 1
         int[] x = new int[num + 1];
         
         for (int i = 0; i < num; i++) {
-            x[i] = Input.number("x[" + i + "]");
+            x[i] = Input.integer("x[" + i + "]");
         }
         
-        int ky = Input.number("search");
+        int ky = Input.integer("search");
         printBar(num);
         
         // 배열 x에서 값이 ky인 요소 검색

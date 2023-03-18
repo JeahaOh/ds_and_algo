@@ -38,16 +38,16 @@ public class BinSearch {
         
         System.out.println("input ASCENDING");
         
-        x[0] = Input.number("x[0] : ");
+        x[0] = Input.integer("x[0] : ");
         
         for (int i = 1; i < num; i++) {
             do {
-                x[i] = Input.number("x[" + i + "] : ");
+                x[i] = Input.integer("x[" + i + "] : ");
             } while (x[i] < x[i - 1]);
             // 이전 값보다 작으면 다시 입력 받음
         }
         
-        int ky = Input.number("search : ");
+        int ky = Input.integer("search : ");
         
         // 배열 x에서 값이 ky인 요소 검색
         int idx = binSearch(x, num, ky);

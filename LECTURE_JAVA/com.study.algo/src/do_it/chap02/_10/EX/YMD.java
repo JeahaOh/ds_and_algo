@@ -69,13 +69,13 @@ public class YMD {
     public static void main(String[] args) {
 
         System.out.println("input date ->");
-        int y = Input.number("year");
-        int m = Input.number("month");
-        int d = Input.number("date");
+        int y = Input.integer("year");
+        int m = Input.integer("month");
+        int d = Input.integer("date");
 
         YMD date = new YMD(y, m, d);
 
-        int n = Input.number("days to calc");
+        int n = Input.integer("days to calc");
 
         YMD d1 = date.after(n);
         System.out.printf("%d 후의 날짜는 %d.%d.%d\n", n, d1.y, d1.m, d1.d);

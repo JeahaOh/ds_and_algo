@@ -19,15 +19,15 @@ public class SearchIndex {
   }
 
   public static void main(String[] args) {
-    int num = Input.number("element");
+    int num = Input.integer("element");
     int[] x = new int[num];
     int[] y = new int[num];
 
     for (int i = 0; i < num; i++) {
-      x[i] = Input.number("x[" + i + "]");
+      x[i] = Input.integer("x[" + i + "]");
     }
 
-    int ky = Input.number("search");
+    int ky = Input.integer("search");
 
     int count = searchIdx(x, num, ky, y);
 
