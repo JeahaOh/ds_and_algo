@@ -54,6 +54,19 @@ public class IntQueueTester {
                 case 4 :
                     q.dump();
                     break;
+
+                case 5 :
+                    x = Input.integer("DATA TO SEARCH");
+                    int n = q.search(x);
+                    if (n != 0)
+                        System.out.printf("%d @ INDEX OF %d", n, q.indexOf(x));
+                    else
+                        System.out.println("NO DATA");
+                    break;
+                    
+                case 6 :
+                    q.clear();
+                    break;
             }
         }
     }
