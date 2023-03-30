@@ -19,7 +19,7 @@ public class Input {
                 n = - 1;
                 errCnt++;
             }
-        } while (n <= 0);
+        } while (n < 0);
         
         return n;
     }
@@ -40,7 +40,7 @@ public class Input {
                 n = - 1;
                 errCnt++;
             }
-        } while (n <= 0);
+        } while (n < 0.0);
         
         return n;
     }
