@@ -1,4 +1,4 @@
-package do_it.chap05._03._05;
+package do_it.chap05._05;
 
 import do_it.Input;
 import do_it.chap04._01.IntStack;
