@@ -1,4 +1,4 @@
-package KDT._02;
+package KDT.week01._02;
 
 public class MagicElevator {
     public static int solution(int storey) {

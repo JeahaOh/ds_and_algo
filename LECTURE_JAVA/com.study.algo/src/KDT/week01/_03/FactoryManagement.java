@@ -1,4 +1,4 @@
-package KDT._03;
+package KDT.week01._03;
 
 public class FactoryManagement {
     static long solution(int goal, int[] durations) {

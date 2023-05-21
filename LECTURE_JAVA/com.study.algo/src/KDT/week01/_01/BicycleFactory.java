@@ -1,4 +1,4 @@
-package KDT._01;
+package KDT.week01._01;
 
 class BicycleFactory {
     

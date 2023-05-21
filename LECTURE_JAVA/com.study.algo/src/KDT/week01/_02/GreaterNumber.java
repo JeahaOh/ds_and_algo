@@ -1,4 +1,4 @@
-package KDT._02;
+package KDT.week01._02;
 
 import java.util.stream.*;
 
