@@ -1,4 +1,4 @@
-package KDT.week02._01;
+package KDT.week02;
 
 import java.util.Arrays;
 
