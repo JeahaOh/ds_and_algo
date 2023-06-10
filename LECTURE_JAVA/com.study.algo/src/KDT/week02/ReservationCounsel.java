@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Queue;
 
 public class ReservationCounsel {
-    class Customer {
+    private static final class Customer {
         final int arrivedAt;
         final String name;
         

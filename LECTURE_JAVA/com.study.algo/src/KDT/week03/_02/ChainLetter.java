@@ -7,7 +7,7 @@ import java.util.Queue;
 
 public class ChainLetter {
     // 주민 클래스
-    class Citizen {
+    private static final class Citizen {
         final boolean isBadBoy;
         final List<Integer> contacts = new ArrayList<>();
         int received = 0;

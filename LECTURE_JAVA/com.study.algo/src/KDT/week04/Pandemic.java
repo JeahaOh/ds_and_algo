@@ -3,7 +3,7 @@ package KDT.week04;
 import java.util.*;
 
 public class Pandemic {
-    class Cell {
+    private static final class Cell {
         int row;
         int col;
         
@@ -87,7 +87,7 @@ public class Pandemic {
         Pandemic p = new Pandemic();
         int[][] result = p.solution(rows, columns, max_virus, queries);
         
-        System.out.println("Arrays.equals : " + Arrays.equals(expect, result));
+        System.out.println("Arrays.equals : " + Arrays.deepEquals(expect, result));
         
         for (int[] row : result) {
             System.out.println(Arrays.toString(row));

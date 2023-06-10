@@ -11,7 +11,7 @@ public class FactoryManagement {
     
     private static long finishHours(int goal, int[] durations, int maxDuration) {
         long min = 0;
-        long max = maxDuration * (goal / durations.length + 1l);
+        long max = maxDuration * (goal / durations.length + 1L);
         
         while (min < max) {
             long mid = (min + max) / 2;
@@ -33,15 +33,15 @@ public class FactoryManagement {
             incentive += hours / d - minCount;
         }
         
-        return incentive * 10_000l;
+        return incentive * 10_000L;
     }
     
     public static void main(String[] args) {
         int goal = 43;
         int[] durations = {5, 3, 7, 6, 4};
         
-        long expect = 150_000l;
+        long expect = 150_000L;
         long result = solution(goal, durations);
-        System.out.println(String.format("expect : %d, result : %d, assert : %b", expect, result, expect == result));
+        System.out.printf("expect : %d, result : %d, assert : %b%n", expect, result, expect == result);
     }
 }

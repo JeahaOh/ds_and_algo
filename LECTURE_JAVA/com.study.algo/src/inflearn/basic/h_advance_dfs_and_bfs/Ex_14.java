@@ -63,6 +63,5 @@ public class Ex_14 {
         dfs(0, 0);
         
         System.out.println(answer);
-        
     }
 }

@@ -2,39 +2,39 @@ package KDT.week04;
 
 import java.util.*;
 
-// String : List<String> 맵 유틸
-class ListMap {
-    private Map<String, List<String>> map = new HashMap<>();
-    
-    List<String> get(String key) {
-        if (!map.containsKey(key)) {
-            map.put(key, new ArrayList<>());
-        }
-        return map.get(key);
-    }
-    
-    void append(String key, String value) {
-        get(key).add(value);
-    }
-}
-
-// String : Integer 맵 유틸
-class CountMap {
-    private Map<String, Integer> map = new HashMap<>();
-    
-    Integer get(String key) {
-        if (!map.containsKey(key)) {
-            map.put(key, 0);
-        }
-        return map.get(key);
-    }
-    
-    void add(String key, Integer value) {
-        map.put(key, get(key) + value);
-    }
-}
 
 public class PrerequisiteClassTree {
+    // String : List<String> 맵 유틸
+    private final static class ListMap {
+        private final Map<String, List<String>> map = new HashMap<>();
+        
+        List<String> get(String key) {
+            if (!map.containsKey(key)) {
+                map.put(key, new ArrayList<>());
+            }
+            return map.get(key);
+        }
+        
+        void append(String key, String value) {
+            get(key).add(value);
+        }
+    }
+    
+    // String : Integer 맵 유틸
+    private final static class CountMap {
+        private final Map<String, Integer> map = new HashMap<>();
+        
+        Integer get(String key) {
+            if (!map.containsKey(key)) {
+                map.put(key, 0);
+            }
+            return map.get(key);
+        }
+        
+        void add(String key, Integer value) {
+            map.put(key, get(key) + value);
+        }
+    }
     
     public static String[] solution(String[] s1, String[] s2, String k) {
         // 연결 그래프 생성
@@ -92,7 +92,7 @@ public class PrerequisiteClassTree {
         String[] s2 = new String[]{"G", "C", "G", "F", "J", "E", "B", "F", "B"};
         String k = "B";
         String[] expect = new String[]{"D", "H", "E", "C", "F", "B"};
-        String[] result = (new PrerequisiteClassTree()).solution(s1, s2, k);
+        String[] result = solution(s1, s2, k);
         
         System.out.println("Arrays.equals(expect, result) : " + Arrays.equals(expect, result));
         System.out.println(Arrays.toString(result));
@@ -101,7 +101,7 @@ public class PrerequisiteClassTree {
         s2 = new String[]{"G", "C", "G", "F", "J", "E", "B", "F", "B"};
         k = "G";
         expect = new String[]{"A", "D", "H", "E", "C", "F", "B", "G"};
-        result = (new PrerequisiteClassTree()).solution(s1, s2, k);
+        result = solution(s1, s2, k);
         
         System.out.println("Arrays.equals(expect, result) : " + Arrays.equals(expect, result));
         System.out.println(Arrays.toString(result));
