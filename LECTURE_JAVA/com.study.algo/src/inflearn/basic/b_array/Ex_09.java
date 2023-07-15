@@ -3,44 +3,48 @@ package inflearn.basic.b_array;
 import java.util.Scanner;
 
 public class Ex_09 {
-  public static int solution(int n, int[][] arr) {
-    int answer = Integer.MIN_VALUE;
-    
-    int sumRow, sumColumn;
-    
-    for (int i = 0; i < n; i++) {
-      sumRow = sumColumn = 0;
-      for (int j = 0; j < n; j++) {
-        sumRow += arr[i][j];
-        sumColumn += arr[j][i];
-      }
-      answer = Math.max(answer, sumRow);
-      answer = Math.max(answer, sumColumn);
-    }
-    
-    sumRow = sumColumn = 0;
-    for (int i = 0; i < n; i++) {
-      sumRow += arr[i][i];
-      sumColumn += arr[i][n - i - 1];
-    }
-    
-    answer = Math.max(answer, sumRow);
-    answer = Math.max(answer, sumColumn);
-    
-    return answer;
-  }
-  
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
-    int n = sc.nextInt();
     
-    int[][] arr = new int[n][n];
+    int n = sc.nextInt();
+    int[][] board = new int[n][n];
     
     for (int i = 0; i < n; i++) {
       for (int j = 0; j < n; j++) {
-        arr[i][j] = sc.nextInt();
+        board[i][j] = sc.nextInt();
       }
     }
-    System.out.println(solution(n, arr));
+    
+    System.out.println(solution(n, board));
+  }
+  
+  public static int solution(int n, int[][] board) {
+    int answer = Integer.MIN_VALUE;
+    int sum1;
+    int sum2;
+    
+    for (int i = 0; i < n; i++) {
+      sum1 = 0;
+      sum2 = 0;
+      
+      for (int j = 0; j < n; j++) {
+        sum1 += board[i][j];
+        sum2 += board[j][i];
+      }
+      
+      answer = Math.max(sum1, sum2);
+    }
+    
+    sum1 = 0;
+    sum2 = 0;
+    
+    for (int i = 0; i < n; i++) {
+      sum1 += board[i][i];
+      sum2 += board[i][n - i - 1];
+    }
+    
+    answer = Math.max(answer, Math.max(sum1, sum2));
+    
+    return answer;
   }
 }
