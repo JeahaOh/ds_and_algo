@@ -25,7 +25,9 @@ public class Ex_10 {
             break;
           }
         }
+        
         if (flag) answer++;
+        
       }
     }
     return answer;
