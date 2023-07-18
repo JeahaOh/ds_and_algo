@@ -2,48 +2,62 @@ package inflearn.basic.b_array;
 
 import java.util.Scanner;
 
+/**
+ * 입력 값의 의미를 잘못 파악했다.
+ * 4 3
+ * 3 4 1 2
+ * 4 3 2 1
+ * 3 1 4 2
+ */
 public class Ex_12 {
-  public static int solution(int n, int m, int[][] array) {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    
+    // 학생 수
+    int studentCnt = sc.nextInt();
+    // 시험 수
+    int testCnt = sc.nextInt();
+    
+    int[][] testResult = new int[testCnt][studentCnt];
+    
+    for (int i = 0; i < testCnt; i++) {
+      for (int j = 0; j < studentCnt; j++) {
+        testResult[i][j] = sc.nextInt();
+      }
+    }
+    
+    System.out.println(solution(studentCnt, testCnt, testResult));
+  }
+  
+  public static int solution(int studentCnt, int testCnt, int[][] array) {
     int answer = 0;
     
-    for (int i = 1; i <= n; i++) {
-      for (int j = 1; j <= n; j++) {
-        // 멘토 멘티의 짝을 이룰수 있는지
+    // 모든 학생들과 대조해 본다.
+    for (int studentI = 1; studentI <= studentCnt; studentI++) {
+      for (int studentJ = 1; studentJ <= studentCnt; studentJ++) {
+        
+        // i가 j보다 성적이 잘 나온 횟수
         int cnt = 0;
-        // 테스트 만큼 반
-        for (int k = 0; k < m; k++) {
-          // i, j 학생의 등수
-          int pi = 0, pj = 0;
-          for (int s = 0; s < n; s++) {
+        for (int k = 0; k < testCnt; k++) {
+          // i와 j의 등수
+          int resultI = 0;
+          int resultJ = 0;
+          
+          for (int s = 0; s < studentCnt; s++) {
             // i와 j의 등수 가져오기
-            if (array[k][s] == i) pi = s;
-            if (array[k][s] == j) pj = s;
+            if (array[k][s] == studentI) resultI = s;
+            if (array[k][s] == studentJ) resultJ = s;
           }
-          // i가 j보다 등수가 높다면, 멘토 멘티를 이룰 수 있음.
-          if (pi < pj) cnt++;
+          
+          // i가 j보다 등수가 앞선다면
+          if (resultI < resultJ) cnt++;
         }
-        // 모든 경우에 등수가 앞선다면
-        if (cnt == m) answer ++;
+        
+        // 모든 시험에서 등수가 앞섰다면
+        if (cnt == testCnt) answer++;
       }
     }
     
     return answer;
-  }
-  
-  public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    // 총 학생 수
-    int n = sc.nextInt();
-    // 총 시험의 수
-    int m = sc.nextInt();
-    int[][] array = new int[m][n];
-    
-    for (int i = 0; i < m; i++) {
-      for (int j = 0; j < n; j++) {
-        array[i][j] = sc.nextInt();
-      }
-    }
-    
-    System.out.println(solution(n, m, array));
   }
 }
