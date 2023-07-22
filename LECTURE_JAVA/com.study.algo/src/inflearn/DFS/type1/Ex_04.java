@@ -6,10 +6,9 @@ import java.util.Collections;
 import java.util.StringTokenizer;
 
 /**
- * https://www.acmicpc.net/problem/24479
- * Created by jeaha on 2023/07/31
+ * https://www.acmicpc.net/problem/24480
  */
-public class Ex_03 {
+public class Ex_04 {
     private static int MAX;
     private static ArrayList<Integer>[] graph;
     private static boolean[] visited;
@@ -23,8 +22,9 @@ public class Ex_03 {
         
         for (int i = 0; i < graph[idx].size(); i++) {
             int next = graph[idx].get(i);
-            if (!visited[next])
+            if (!visited[next]) {
                 dfs(next);
+            }
         }
     }
     
@@ -50,6 +50,7 @@ public class Ex_03 {
         // graph 연결 정보 채우기
         for (int i = 1; i <= M; i++) {
             st = new StringTokenizer(br.readLine());
+            
             int u = Integer.parseInt(st.nextToken());
             int v = Integer.parseInt(st.nextToken());
             
@@ -57,9 +58,8 @@ public class Ex_03 {
             graph[v].add(u);
         }
         
-        // 오름차순 정렬
         for (int i = 0; i <= N; i++) {
-            Collections.sort(graph[i]);
+            Collections.sort(graph[i], Collections.reverseOrder());
         }
         
         // dfs
