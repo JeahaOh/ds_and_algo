@@ -1,3 +1,5 @@
+package nojam.step._02_condition;
+
 import java.io.*;
 import java.util.StringTokenizer;
 
